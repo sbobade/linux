@@ -324,20 +324,6 @@ void iTCO_vendor_pre_stop(struct resource *smires)
 }
 EXPORT_SYMBOL(iTCO_vendor_pre_stop);
 
-void iTCO_vendor_pre_keepalive(struct resource *smires, unsigned int heartbeat)
-{
-	if (vendorsupport == SUPERMICRO_NEW_BOARD)
-		supermicro_new_pre_set_heartbeat(heartbeat);
-}
-EXPORT_SYMBOL(iTCO_vendor_pre_keepalive);
-
-void iTCO_vendor_pre_set_heartbeat(unsigned int heartbeat)
-{
-	if (vendorsupport == SUPERMICRO_NEW_BOARD)
-		supermicro_new_pre_set_heartbeat(heartbeat);
-}
-EXPORT_SYMBOL(iTCO_vendor_pre_set_heartbeat);
-
 int iTCO_vendor_check_noreboot_on(void)
 {
 	switch (vendorsupport) {
