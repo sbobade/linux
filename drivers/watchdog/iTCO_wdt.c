@@ -246,7 +246,7 @@ static void iTCO_wdt_no_reboot_bit_setup(struct iTCO_wdt_private *p,
 		return;
 	}
 
-	if (p->iTCO_version >= 6)
+	if (p->iTCO_version >= 4)
 		p->update_no_reboot_bit = update_no_reboot_bit_cnt;
 	else if (p->iTCO_version >= 2)
 		p->update_no_reboot_bit = update_no_reboot_bit_mem;
@@ -476,7 +476,7 @@ static int iTCO_wdt_probe(struct platform_device *pdev)
 	 * Get the Memory-Mapped GCS or PMC register, we need it for the
 	 * NO_REBOOT flag (TCO v2 and v3).
 	 */
-	if (p->iTCO_version >= 2 && p->iTCO_version < 6 &&
+	if (p->iTCO_version >= 2 && p->iTCO_version < 4 &&
 	    !pdata->update_no_reboot_bit) {
 		p->gcs_pmc_res = platform_get_resource(pdev,
 						       IORESOURCE_MEM,
